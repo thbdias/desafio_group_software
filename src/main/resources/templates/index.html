@@ -5,26 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Ola mundo</h1>
-	<a href="/cadastroPessoa">Cadastro de Pessoa</a>
-	<br>
+	<h1>DESAFIO 1</h1>	
+	
 	<a href="/cadastroVeiculo">Cadastro de Veículo</a>
 	<br><br><br><br>
 	
 	<form action="calcularCustoTotal" method="post" th:object="${custoObj}">
 		<label>Distância Rodovia Pavimentada(RP): </label> 
-		<input name="distanciaRodoviaPavimentada"> <br>
+		<input name="distanciaRodoviaPavimentada"> <br><br>
 		
 		<label>Distância Rodovia NÃO Pavimentada(RNP): </label> 
-		<input name="distanciaNaoRodoviaPavimentada"> <br>
+		<input name="distanciaNaoRodoviaPavimentada"> <br><br>
 		
 		<label>Veículo: </label> 
-		<input name="nomeVeiculo"> <br>
+		<input name="nomeVeiculo"> <br><br>
 		
 		<label>Carga (ton): </label> 
-		<input name="carga"> <br><br>		
+		<input name="carga"> <br><br><br>		
 		
-		<input type="submit" value="Calcular"> <br><br><br><br>
+		<input type="submit" value="Calcular"> <br><br><br><br><br>
 		
 		<label>Custo Total: </label> 
 		<input name="custoTotal" th:field="*{valorCustoTotal}"> 
