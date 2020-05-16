@@ -1,5 +1,8 @@
 package exercise.one.springboot.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,15 +32,20 @@ public class VeiculoController {
 	
 	@PostMapping(value = "/calcularCustoTotal")
 	public String calcularCustoTotal(
-						@RequestParam("distanciaRodoviaPavimentada") Double distanciaRodoviaPavimentada,
-						@RequestParam("distanciaNaoRodoviaPavimentada") Double distanciaNaoRodoviaPavimentada,
+						@RequestParam("distanciaRodoviaPavimentada") Integer distanciaRodoviaPavimentada,
+						@RequestParam("distanciaNaoRodoviaPavimentada") Integer distanciaNaoRodoviaPavimentada,
 						@RequestParam("nomeVeiculo") String nomeVeiculo,
 						@RequestParam("carga") Integer carga) {
 		
-		System.out.println("\n\n rp = " + distanciaRodoviaPavimentada);
-		System.out.println("\n\n rp = " + distanciaNaoRodoviaPavimentada);
-		System.out.println("\n\n rp = " + nomeVeiculo);
-		System.out.println("\n\n rp = " + carga);
+		
+		Veiculo veiculo = veiculoService.getVeiculoPorNome(nomeVeiculo);		
+		Double custoTotal = veiculoService.obterCustoTotal(distanciaRodoviaPavimentada, distanciaNaoRodoviaPavimentada, veiculo, carga);		
+		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+									    			.setScale(2, RoundingMode.HALF_UP)
+									    			.doubleValue();
+		
+		System.out.println("\n\n custo = " + custoTotal);
+		System.out.println("\n\n custo = " + custoTotalFormatado);
 		return "index"; //arquivo html
 		
 	}
