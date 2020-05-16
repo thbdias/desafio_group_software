@@ -33,6 +33,10 @@ public class VeiculoService {
 		return veiculoRepository.findVeiculoByName(nome);
 	}
 	
+	public List<Veiculo> getTodosVeiculos(){
+		return veiculoRepository.findAll();
+	}
+	
 	
 	public Double obterCustoTotal(Integer distPavimento, Integer distNaoPavimento, Veiculo veiculo, Integer carga) {
 		Double custoTotal = 0.0;		

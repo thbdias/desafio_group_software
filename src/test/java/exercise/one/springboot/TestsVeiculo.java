@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,35 +88,42 @@ class TestsVeiculo {
 //		assertEquals(veiculo.getNome(), "Carreta eixo estendido");
 //	}
 	
+//	@Test
+//	public void testeObeterCustoTotal2(){
+//		Veiculo veiculo = veiculoService.getVeiculoPorNome("Carreta simples");
+//		Double custoTotal = veiculoService.obterCustoTotal(90, 0, veiculo, 8);
+//		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+//						    			.setScale(2, RoundingMode.HALF_UP)
+//						    			.doubleValue();
+//		assertEquals(custoTotalFormatado, 72.17);
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Veículo urbano de carga (VUC)");
+//		custoTotal = veiculoService.obterCustoTotal(0, 85, veiculo, 1);
+//		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+//						    			.setScale(2, RoundingMode.HALF_UP)
+//						    			.doubleValue();
+//		assertEquals(custoTotalFormatado, 61.2);
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Carreta eixo estendido");
+//		custoTotal = veiculoService.obterCustoTotal(20, 80, veiculo, 12);
+//		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+//						    			.setScale(2, RoundingMode.HALF_UP)
+//						    			.doubleValue();
+//		assertEquals(custoTotalFormatado, 104.54);
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
+//		custoTotal = veiculoService.obterCustoTotal(70, 20, veiculo, 5);
+//		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+//						    			.setScale(2, RoundingMode.HALF_UP)
+//						    			.doubleValue();
+//		assertEquals(custoTotalFormatado, 63.18);
+//	}
+	
 	@Test
-	public void testeObeterCustoTotal2(){
-		Veiculo veiculo = veiculoService.getVeiculoPorNome("Carreta simples");
-		Double custoTotal = veiculoService.obterCustoTotal(90, 0, veiculo, 8);
-		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
-						    			.setScale(2, RoundingMode.HALF_UP)
-						    			.doubleValue();
-		assertEquals(custoTotalFormatado, 72.17);
-		
-		veiculo = veiculoService.getVeiculoPorNome("Veículo urbano de carga (VUC)");
-		custoTotal = veiculoService.obterCustoTotal(0, 85, veiculo, 1);
-		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
-						    			.setScale(2, RoundingMode.HALF_UP)
-						    			.doubleValue();
-		assertEquals(custoTotalFormatado, 61.2);
-		
-		veiculo = veiculoService.getVeiculoPorNome("Carreta eixo estendido");
-		custoTotal = veiculoService.obterCustoTotal(20, 80, veiculo, 12);
-		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
-						    			.setScale(2, RoundingMode.HALF_UP)
-						    			.doubleValue();
-		assertEquals(custoTotalFormatado, 104.54);
-		
-		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
-		custoTotal = veiculoService.obterCustoTotal(70, 20, veiculo, 5);
-		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
-						    			.setScale(2, RoundingMode.HALF_UP)
-						    			.doubleValue();
-		assertEquals(custoTotalFormatado, 63.18);
+	public void testeGetAllVeiculos() {
+		List<Veiculo> listaVeiculo = veiculoService.getTodosVeiculos();
+		System.out.println(listaVeiculo);
+		assertEquals(5, listaVeiculo.size());
 	}
 
 }
