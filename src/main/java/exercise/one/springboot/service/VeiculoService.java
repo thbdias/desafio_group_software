@@ -1,5 +1,7 @@
 package exercise.one.springboot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,12 @@ public class VeiculoService {
 		veiculoRepository.save(veiculo);
 	}
 	
+	public void salvarLista(List<Veiculo> listVeiculo) {
+		veiculoRepository.saveAll(listVeiculo);
+	}
 	
-	public Double obterCustoTotal(Integer distPavimento, Integer distNaoPavimento) {
+	
+	public Double obterCustoTotal(Integer distPavimento, Integer distNaoPavimento, Veiculo veiculo, Integer carga) {
 		
 		System.out.println("/n/n/n/p = " + distPavimento + "(" + RodoviaEnum.RODOVIA_PAVIMENTADA.getValor() + ")"); 
 		System.out.println("/n/n/n/p = " + distNaoPavimento + "(" + RodoviaEnum.RODOVIA_NAO_PAVIMENTADA.getValor() + ")");
