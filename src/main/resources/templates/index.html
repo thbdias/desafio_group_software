@@ -12,10 +12,10 @@
 	
 	<form action="calcularCustoTotal" method="post" th:object="${custoObj}">
 		<label>Distância Rodovia Pavimentada(RP): </label> 
-		<input name="distanciaRodoviaPavimentada"> <br><br>
+		<input name="distanciaRodoviaPavimentada" placeholder="use inteiro"> <br><br>
 		
 		<label>Distância Rodovia NÃO Pavimentada(RNP): </label> 
-		<input name="distanciaNaoRodoviaPavimentada"> <br><br>
+		<input name="distanciaNaoRodoviaPavimentada" placeholder="use inteiro"> <br><br>
 		
 		<label>Veículo: </label>
 		<select class="browser-default" th:field="*{veiculo}" id="idVeiculo">						
@@ -25,7 +25,7 @@
 		<br><br>
 		
 		<label>Carga (ton): </label> 
-		<input name="carga"> <br><br><br>		
+		<input name="carga" placeholder="use inteiro"> <br><br><br>		
 		
 		<input type="submit" value="Calcular"> <br><br><br><br>
 		
