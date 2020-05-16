@@ -7,12 +7,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import exercise.one.springboot.model.Pessoa;
 import exercise.one.springboot.model.Veiculo;
 import exercise.one.springboot.repository.VeiculoRepository;
+import exercise.one.springboot.service.VeiculoService;
 
 @SpringBootTest
 class TestsVeiculo {
 	
 	@Autowired
-	VeiculoRepository veiculoRepository;
+	VeiculoService VeiculoService;
 
 	@Test
 	void contextLoads() {
@@ -21,9 +22,9 @@ class TestsVeiculo {
 	@Test
 	public void testeSalvar(){		
 		Veiculo veiculo = new Veiculo();
-		veiculo.setNome("Caminhão 3/4");
-		veiculo.setFatorMultiplidor(1.5);
-		veiculoRepository.save(veiculo);
+		veiculo.setNome("busu");
+		veiculo.setFatorMultiplidor(7.5);
+		VeiculoService.salvar(veiculo);
 	}
 
 }

@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import exercise.one.springboot.model.Pessoa;
-import exercise.one.springboot.repository.PessoaRepository;
+import exercise.one.springboot.service.PessoaService;
 
 @Controller
 public class PessoaController {
 	
 	@Autowired
-	PessoaRepository pessoaRepository;
+	PessoaService pessoaService;
 	
 	@GetMapping(value = "/cadastroPessoa")
 	public String inicio() {		
@@ -21,7 +21,7 @@ public class PessoaController {
 	
 	@PostMapping(value = "/salvarPessoa")
 	public String salvar(Pessoa pessoa) {
-		pessoaRepository.save(pessoa);
+		pessoaService.salvar(pessoa);
 		return "cadastro/cadastroPessoa";
 	}
 
