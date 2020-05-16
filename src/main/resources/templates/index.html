@@ -11,7 +11,7 @@
 	<a href="/cadastroVeiculo">Cadastro de Veículo</a>
 	<br><br><br><br>
 	
-	<form action="calcularCustoTotal" method="post">
+	<form action="calcularCustoTotal" method="post" th:object="${custoObj}">
 		<label>Distância Rodovia Pavimentada(RP): </label> 
 		<input name="distanciaRodoviaPavimentada"> <br>
 		
@@ -27,7 +27,7 @@
 		<input type="submit" value="Calcular"> <br><br><br><br>
 		
 		<label>Custo Total: </label> 
-		<input name="custoTotal"> 
+		<input name="custoTotal" th:field="*{valorCustoTotal}"> 
 	</form>
 </body>
 </html>
