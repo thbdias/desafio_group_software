@@ -23,6 +23,10 @@ public class VeiculoService {
 		veiculoRepository.saveAll(listVeiculo);
 	}
 	
+	public Veiculo getVeiculoPorId(Long id) {
+		return veiculoRepository.findById(id).get();
+	}
+	
 	
 	public Double obterCustoTotal(Integer distPavimento, Integer distNaoPavimento, Veiculo veiculo, Integer carga) {
 		
