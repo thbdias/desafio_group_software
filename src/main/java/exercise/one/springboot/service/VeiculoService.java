@@ -14,8 +14,10 @@ public class VeiculoService {
 
 	@Autowired
 	VeiculoRepository veiculoRepository;
+	
 	private static final Integer LIMITE_CARGA = 5;
 	private static final Double VALOR_POR_TONELADA_POR_KM = 0.03;
+	
 	
 	public void salvar(Veiculo veiculo) {
 		veiculoRepository.save(veiculo);
