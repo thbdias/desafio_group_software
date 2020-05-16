@@ -58,15 +58,33 @@ class TestsVeiculo {
 //	}
 	
 	
+//	@Test
+//	public void testeObeterCustoTotal(){
+//		Veiculo veiculo = veiculoService.getVeiculoPorId(25L);
+//		Double custoTotal = veiculoService.obterCustoTotal(70, 20, veiculo, 5);
+//		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+//						    			.setScale(3, RoundingMode.HALF_UP)
+//						    			.doubleValue();		
+//		
+//		assertEquals(custoTotalFormatado, 63.18);
+//	}
+	
 	@Test
-	public void testeObeterCustoTotal(){
-		Veiculo veiculo = veiculoService.getVeiculoPorId(25L);
-		Double custoTotal = veiculoService.obterCustoTotal(70, 20, veiculo, 5);
-		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
-						    			.setScale(3, RoundingMode.HALF_UP)
-						    			.doubleValue();		
+	public void testeGetVeiculoPorNome(){
+		Veiculo veiculo = veiculoService.getVeiculoPorNome("Carreta simples");
+		assertEquals(veiculo.getNome(), "Carreta simples");
 		
-		assertEquals(custoTotalFormatado, 63.18);
+		veiculo = veiculoService.getVeiculoPorNome("Veículo urbano de carga (VUC)");
+		assertEquals(veiculo.getNome(), "Veículo urbano de carga (VUC)");
+		
+		veiculo = veiculoService.getVeiculoPorNome("Caminhão 3/4");
+		assertEquals(veiculo.getNome(), "Caminhão 3/4");
+		
+		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
+		assertEquals(veiculo.getNome(), "Caminhão toco");
+		
+		veiculo = veiculoService.getVeiculoPorNome("Carreta eixo estendido");
+		assertEquals(veiculo.getNome(), "Carreta eixo estendido");
 	}
 
 }
