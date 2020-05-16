@@ -21,6 +21,14 @@ class TestsVeiculo {
 	
 	@Test
 	public void testeSalvar(){		
+		Veiculo veiculo = new Veiculo();		
+		veiculo.setNome("Caminhonete");
+		veiculo.setFatorMultiplidor(2.3);		
+		veiculoService.salvar(veiculo);
+	}
+	
+	@Test
+	public void testeSalvarLista(){		
 		List<Veiculo> listVeiculo = new ArrayList<>();
 		
 		Veiculo veiculo = new Veiculo();		
@@ -46,8 +54,7 @@ class TestsVeiculo {
 		veiculo = new Veiculo();
 		veiculo.setNome("Carreta eixo estendido");
 		veiculo.setFatorMultiplidor(1.19);
-		listVeiculo.add(veiculo);
-		
+		listVeiculo.add(veiculo);		
 		veiculoService.salvarLista(listVeiculo);
 	}
 	
