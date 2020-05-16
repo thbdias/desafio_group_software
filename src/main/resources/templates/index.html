@@ -17,13 +17,9 @@
 		<label>Distância Rodovia NÃO Pavimentada(RNP): </label> 
 		<input name="distanciaNaoRodoviaPavimentada"> <br><br>
 		
-		<label>Veículo: </label> 
-		<input name="nomeVeiculo"> 
-		
-		<select class="browser-default" th:field="*{veiculo}" id="idVeiculo">
-						
+		<label>Veículo: </label>
+		<select class="browser-default" th:field="*{veiculo}" id="idVeiculo">						
 			<option th:each="v : ${veiculosObj}" th:value="${v.id}" th:text="${v.nome}" />
-			
 		</select>
 		
 		<br><br>
