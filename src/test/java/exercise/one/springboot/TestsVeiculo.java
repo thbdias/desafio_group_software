@@ -69,22 +69,53 @@ class TestsVeiculo {
 //		assertEquals(custoTotalFormatado, 63.18);
 //	}
 	
+//	@Test
+//	public void testeGetVeiculoPorNome(){
+//		Veiculo veiculo = veiculoService.getVeiculoPorNome("Carreta simples");
+//		assertEquals(veiculo.getNome(), "Carreta simples");
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Veículo urbano de carga (VUC)");
+//		assertEquals(veiculo.getNome(), "Veículo urbano de carga (VUC)");
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Caminhão 3/4");
+//		assertEquals(veiculo.getNome(), "Caminhão 3/4");
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
+//		assertEquals(veiculo.getNome(), "Caminhão toco");
+//		
+//		veiculo = veiculoService.getVeiculoPorNome("Carreta eixo estendido");
+//		assertEquals(veiculo.getNome(), "Carreta eixo estendido");
+//	}
+	
 	@Test
-	public void testeGetVeiculoPorNome(){
+	public void testeObeterCustoTotal2(){
 		Veiculo veiculo = veiculoService.getVeiculoPorNome("Carreta simples");
-		assertEquals(veiculo.getNome(), "Carreta simples");
+		Double custoTotal = veiculoService.obterCustoTotal(90, 0, veiculo, 8);
+		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+						    			.setScale(2, RoundingMode.HALF_UP)
+						    			.doubleValue();
+		assertEquals(custoTotalFormatado, 72.17);
 		
 		veiculo = veiculoService.getVeiculoPorNome("Veículo urbano de carga (VUC)");
-		assertEquals(veiculo.getNome(), "Veículo urbano de carga (VUC)");
-		
-		veiculo = veiculoService.getVeiculoPorNome("Caminhão 3/4");
-		assertEquals(veiculo.getNome(), "Caminhão 3/4");
-		
-		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
-		assertEquals(veiculo.getNome(), "Caminhão toco");
+		custoTotal = veiculoService.obterCustoTotal(0, 85, veiculo, 1);
+		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+						    			.setScale(2, RoundingMode.HALF_UP)
+						    			.doubleValue();
+		assertEquals(custoTotalFormatado, 61.2);
 		
 		veiculo = veiculoService.getVeiculoPorNome("Carreta eixo estendido");
-		assertEquals(veiculo.getNome(), "Carreta eixo estendido");
+		custoTotal = veiculoService.obterCustoTotal(20, 80, veiculo, 12);
+		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+						    			.setScale(2, RoundingMode.HALF_UP)
+						    			.doubleValue();
+		assertEquals(custoTotalFormatado, 104.54);
+		
+		veiculo = veiculoService.getVeiculoPorNome("Caminhão toco");
+		custoTotal = veiculoService.obterCustoTotal(70, 20, veiculo, 5);
+		custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+						    			.setScale(2, RoundingMode.HALF_UP)
+						    			.doubleValue();
+		assertEquals(custoTotalFormatado, 63.18);
 	}
 
 }
