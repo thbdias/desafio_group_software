@@ -35,9 +35,8 @@ public class VeiculoController {
 	}
 	
 	@PostMapping(value = "/calcularCustoTotal")
-	public ModelAndView calcularCustoTotal(CustoTotal custoTotal) {
+	public ModelAndView calcularCustoTotal(CustoTotal custoTotal) {		
 		
-//		Veiculo veiculo = veiculoService.getVeiculoPorNome(custoTotal.getNomeVeiculo());		
 		Double valorCustoTotal = veiculoService.obterCustoTotal(custoTotal.getDistanciaRodoviaPavimentada() , 
 																custoTotal.getDistanciaNaoRodoviaPavimentada(), 
 																custoTotal.getVeiculo(), 

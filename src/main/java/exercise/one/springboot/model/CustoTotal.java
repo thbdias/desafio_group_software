@@ -5,7 +5,6 @@ public class CustoTotal {
 	private Double valorCustoTotal;
 	private Integer distanciaRodoviaPavimentada;
 	private Integer distanciaNaoRodoviaPavimentada;
-	private String nomeVeiculo;
 	private Integer carga;
 	private Veiculo veiculo;
 	
@@ -43,15 +42,7 @@ public class CustoTotal {
 
 	public void setDistanciaNaoRodoviaPavimentada(Integer distanciaNaoRodoviaPavimentada) {
 		this.distanciaNaoRodoviaPavimentada = distanciaNaoRodoviaPavimentada;
-	}
-
-	public String getNomeVeiculo() {
-		return nomeVeiculo;
-	}
-
-	public void setNomeVeiculo(String nomeVeiculo) {
-		this.nomeVeiculo = nomeVeiculo;
-	}
+	}	
 
 	public Integer getCarga() {
 		return carga;
