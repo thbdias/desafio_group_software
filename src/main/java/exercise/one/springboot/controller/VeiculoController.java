@@ -29,11 +29,18 @@ public class VeiculoController {
 	
 	@PostMapping(value = "/calcularCustoTotal")
 	public String calcularCustoTotal(
-						@RequestParam("distanciaRodoviaPavimentada") Double distanciaRodoviaPavimentada) {
+						@RequestParam("distanciaRodoviaPavimentada") Double distanciaRodoviaPavimentada,
+						@RequestParam("distanciaNaoRodoviaPavimentada") Double distanciaNaoRodoviaPavimentada,
+						@RequestParam("nomeVeiculo") String nomeVeiculo,
+						@RequestParam("carga") Integer carga) {
 		
 		System.out.println("\n\n rp = " + distanciaRodoviaPavimentada);
+		System.out.println("\n\n rp = " + distanciaNaoRodoviaPavimentada);
+		System.out.println("\n\n rp = " + nomeVeiculo);
+		System.out.println("\n\n rp = " + carga);
 		return "index"; //arquivo html
 		
 	}
 	
 }
+
