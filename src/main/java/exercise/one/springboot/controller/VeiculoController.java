@@ -2,12 +2,14 @@ package exercise.one.springboot.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
+
+import javax.swing.text.html.ListView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import exercise.one.springboot.model.CustoTotal;
@@ -33,27 +35,28 @@ public class VeiculoController {
 	}
 	
 	@PostMapping(value = "/calcularCustoTotal")
-	public ModelAndView calcularCustoTotal(
-						@RequestParam("distanciaRodoviaPavimentada") Integer distanciaRodoviaPavimentada,
-						@RequestParam("distanciaNaoRodoviaPavimentada") Integer distanciaNaoRodoviaPavimentada,
-						@RequestParam("nomeVeiculo") String nomeVeiculo,
-						@RequestParam("carga") Integer carga) {
+	public ModelAndView calcularCustoTotal(CustoTotal custoTotal) {
 		
+		Veiculo veiculo = veiculoService.getVeiculoPorNome(custoTotal.getNomeVeiculo());		
+		Double valorCustoTotal = veiculoService.obterCustoTotal(custoTotal.getDistanciaRodoviaPavimentada() , 
+																custoTotal.getDistanciaNaoRodoviaPavimentada(), 
+																veiculo, 
+																custoTotal.getCarga());
 		
-		Veiculo veiculo = veiculoService.getVeiculoPorNome(nomeVeiculo);		
-		Double custoTotal = veiculoService.obterCustoTotal(distanciaRodoviaPavimentada, distanciaNaoRodoviaPavimentada, veiculo, carga);
-		Double custoTotalFormatado = BigDecimal.valueOf(custoTotal)
+		Double valorCustoTotalFormatado = BigDecimal.valueOf(valorCustoTotal)
 									    			.setScale(2, RoundingMode.HALF_UP)
 									    			.doubleValue();
 		
-		System.out.println("\n custo = " + custoTotal);
-		System.out.println("\n custo = " + custoTotalFormatado);
+		custoTotal.setValorCustoTotal(valorCustoTotalFormatado);
+		
+//		System.out.println("\n custo = " + valorCustoTotal);
+//		System.out.println("\n custo = " + valorCustoTotalFormatado);
 
-		CustoTotal custoTotalObj = new CustoTotal();
-		custoTotalObj.setValorCustoTotal(custoTotalFormatado);
+		List<Veiculo> listVeiculo = veiculoService.getTodosVeiculos();
 		
 		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView.addObject("custoObj", custoTotalObj);
+		modelAndView.addObject("custoObj", custoTotal);
+		modelAndView.addObject("veiculosObj", listVeiculo);
 		return modelAndView; 
 		
 	}
